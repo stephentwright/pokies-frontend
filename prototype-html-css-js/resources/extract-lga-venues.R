@@ -1,6 +1,7 @@
 library(readxl)
 library(stringr)
 library(tidyverse)
+library(jsonlite)
 
 # read in the xlxs file;
 filePath <- 'D:/Repositories/pokies-watch/prototype-html-css-js/resources/premises/'
@@ -27,6 +28,32 @@ lgaNSW <- rbind(lgaNSW,cleanedLGAs)
 rawVenuesLGA <- left_join(rawVenues,lgaNSW, by="lgaNameClean")
 needToClean <- rawVenuesLGA %>% filter(is.na(lgaIDsNSW)) %>% group_by(LGA,lgaNameClean) %>% summarise(n=n())
 ## only 162 record not merged with an LGA code;
+
+# prep the data for exporting
+keepColumns <- c("`Licence number`","`Licence name`")
+
+keepVenues <- rawVenuesLGA %>% 
+                filter(`Licence type`=='Liquor - club licence', EGMs>0) %>%
+                  select(`Licence number`,
+                         `Licence name`,
+                         Address,
+                         Suburb,
+                         Postcode,
+                         Latitude,
+                         Longitude,
+                         lgaIDsNSW,
+                         EGMs)
+
+# export as JSON -- break into individual files
+lgaIDs <- unique(keepVenues$lgaIDsNSW)
+
+for (i in 1:length(lgaIDs)) {
+  extract <- keepVenues %>% filter(lgaIDsNSW == lgaIDs[i])
+  json <- toJSON(extract)
+  write(json, file=paste(filePath,lgaIDs[i],'-venues.json',sep=''))
+} 
+
+
 
 
 

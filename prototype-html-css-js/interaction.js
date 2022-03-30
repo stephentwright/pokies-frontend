@@ -3,6 +3,9 @@ const mapKey = "pk.eyJ1Ijoic3RlcGhlbnR3cmlnaHQiLCJhIjoiY2twODhhcTJlMDZqdjJvb2Y2Z
 const mapCentre = [-33.4488233,151.3786264];
 const mapZoom = 10;
 
+const apiPath = '/prototype-html-css-js/resources/'
+const geoJSON = 'geoJSON/'
+const lgaCode = '18450'
 
 // basic initalisation of the map;
 var map = L.map('map-container', { zoomControl: false} ).setView(mapCentre, mapZoom);
@@ -21,5 +24,23 @@ new L.Control.Zoom({ position: 'bottomright'}).addTo(map)
 // add a polygon of an LGA to the map
 // TODO: refactor this bit to get a general ajax and loading of data mimicing an API endpoint
 //       load geojson -> update popup info -> add as a layer 
-var geojsonLayer = new L.GeoJSON.AJAX("/prototype-html-css-js/resources/central-coast.geojson");       
-geojsonLayer.addTo(map);
+var geojsonLayer = new L.GeoJSON.AJAX(apiPath+geoJSON+lgaCode+'.geojson');       
+geojsonLayer
+    .bindPopup('Hello')
+    .addTo(map);
+
+// add a list of premises to the map 
+const premises = 'premises/';
+const premisesLga = lgaCode+'-venues.json';
+
+fetch(apiPath+premises+premisesLga)
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => {
+        for (let i = 0; i < data.length; i++){
+            L.marker([data[i].Latitude, data[i].Longitude])
+             .bindPopup(data[i]["Licence name"])
+             .addTo(map)
+        }
+    });
