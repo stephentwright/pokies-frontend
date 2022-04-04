@@ -12,8 +12,10 @@
         <img src="/prototype-html-css-js/resources/media/logo-placeholder.png" />
     </div>
     <div id="search-container" class="overlay">
-        <input type="search" id="sarch" autocomplete="off" name="q" placeholder="Search by suburb, postcode, local government area">
-        <button><img src="/prototype-html-css-js/resources/media/search-icon.png" /></button>
+        <form id="search-input">
+            <input type="input" id="search-value" placeholder="enter lga code" />
+            <input type="submit" hidden />
+        </form> 
     </div>
     <div id="socials-help-container" class="overlay">
         <img src="/prototype-html-css-js/resources/media/twitter-icon.png" />
