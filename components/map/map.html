@@ -2,8 +2,21 @@
 <html>
     <head>
         <title>Map Component</title>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css' rel='stylesheet' />
+        <link href='/components/map/map.css' rel='stylesheet' />
     </head>
     <main>
-        <h1>This is the map</h1>
+        <h1>This is a simple map</h1>
+        <div id='map'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1Ijoic3RlcGhlbnR3cmlnaHQiLCJhIjoiY2twODhhcTJlMDZqdjJvb2Y2ZTBxZzZzNiJ9.T-ETd1zEPRxEruIkdjy49w';
+            var map = new mapboxgl.Map({container: 'map', // container ID
+                                        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                                        center: [151.3, -33.5], // starting position [lng, lat]
+                                        zoom: 9 // starting zoom
+                                    });
+        </script>
     </main>
+    
 </html>

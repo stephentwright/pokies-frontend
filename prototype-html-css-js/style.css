@@ -1,0 +1,58 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+
+#map-container {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.overlay {
+    border-radius: 5px;
+    z-index: 1;
+    position: absolute;
+    background-color: black;    
+}
+
+#logo-container {
+    top:1%; 
+    left:1%; 
+    width:220px; 
+    height:150px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+#search-container {
+    top:1%; 
+    right:1%; 
+    display: inline-flex;
+    height: 75px;
+    width: 400px;
+    padding: 5px;
+    justify-content: space-around;
+    background-color: whitesmoke;
+}
+
+input {
+    height: auto;
+    width: 390px;
+    font-size: 24px;
+}
+
+#socials-help-container {
+    bottom:1%; 
+    left:1%; 
+    width:250px; 
+    height:50px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
