@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-/* Stylings for the Help Box */
+/* Stylings for the Help Box 
 #help-container {
     display: none;
     max-width: 800px;
@@ -43,17 +43,30 @@
     transform: translate(-50%, 0);
     overflow-y: auto;
     z-index: 2;
+} */
+
+#help-container {
+    display: none;
+    max-width: 1600px;
+    padding: 20px;
+    margin: 0 10% 0% 10%;
+    background-color: beige;
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+    overflow-y: auto;
+    z-index: 2;
 }
 
 .help-item-container {
-    height:400px;
+    height:80%;
 }
 
 #about-container , #contact-container {
     display: none;
 }
 
-ul {
+.popup-help-container ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -61,7 +74,7 @@ ul {
     background-color: wheat;
   }
   
-li {
+.popup-help-container li {
     float: left;
     display: block;
     text-align: center;
@@ -71,13 +84,13 @@ li {
     cursor: pointer;
 }
   
-li:hover {
-   background-color: grey;
+.popup-help-container li:hover {
+   background-color: orange;
 }
 
-.active {
+.popup-help-container .active {
     background-color: pink;
-    color: white;
+    color: green;
 }
 
 .close-help {

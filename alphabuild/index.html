@@ -19,16 +19,17 @@
 
     <!-- LOGO -->
     <div class="logo-container" onClick="window.location.reload()">
-        <img src="/alphabuild/resources/img/logo-large.png">
+        <img src="/alphabuild/resources/img/slot-machine.png">
     </div>
     
     <!-- SEARCH -->
     <div class="search-container">
         <div class="search-input">
-            <input type="input" onfocus="this.value=''" placeholder="Type to search suburb, postcode, lga ...">
-            <div class="autocom-box">
-            </div>
-            <div class="search-icon"><i class="material-icons">search</i></div>
+            <div class="search-bar">
+                <input type="input" onfocus="this.value=''" placeholder="Type to search suburb, postcode, lga ...">
+                <div class="search-icon"><i class="material-icons">search</i></div>
+            </div> 
+            <div class="autocom-box"></div>
         </div>
     </div>
 
@@ -38,12 +39,11 @@
         <img class='social-img help-button' src="/alphabuild/resources/img/help-icon64.png" onclick='showOrHideContainer("help-container")'/>
         <a href="https://twitter.com/PokiesWatch" target="_blank"><img class='social-img' src="/alphabuild/resources/img/twitter-icon64.png"/></a>
         <a href="https://github.com/stephentwright/pokies-watch" target="_blank"><img class='social-img' src="/alphabuild/resources/img/github-icon64.png"/></a>
-        <a href="https://www.linkedin.com/in/stephen-wright-number-nerd" target="_blank"><img class='social-img' src="/alphabuild/resources/img/linkedin-icon64.png"></a>
     </div>
     <div id="help-container" class="popup-help-container">
         <i class="material-icons close-help" onclick='hideContainer("help-container")'>close</i>
         <h2>This is a Help container</h2>
-        <ul>
+        <ul >
             <li id="item-how-to" class='active' onclick='toggleHelpBar("how-to-container")'>How-to</li>
             <li id="item-about" onclick='toggleHelpBar("about-container")'>About</li>
             <li id="item-contact" onclick='toggleHelpBar("contact-container")'>Contact</li>

@@ -1,41 +1,31 @@
 // GLOBAL VARIABLES
 const MAP_KEY = "pk.eyJ1Ijoic3RlcGhlbnR3cmlnaHQiLCJhIjoiY2twODhhcTJlMDZqdjJvb2Y2ZTBxZzZzNiJ9.T-ETd1zEPRxEruIkdjy49w";
-const MAP_CENTER = [-33.32,151.3186264];
-const MAP_ZOOM = 11;
 const MAP_CONTROLS = {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 16,
-    minZoom: 7,
+    minZoom: 6,
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
     accessToken: MAP_KEY
 }
 
+// Set inital map to focus on Sydney and should be good for most viewports
+let mapCenterLat = -33.85;
+let mapCenterLng = 151.22;
+let mapZoom = 11;
+
 // Initalise a new Map and reset position of zoom controls;
-let map = L.map('map-container', {zoomControl: false} ).setView(MAP_CENTER, MAP_ZOOM);
+let map = L.map('map-container', {zoomControl: false} ).setView([mapCenterLat, mapCenterLng], mapZoom);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',MAP_CONTROLS).addTo(map);
 new L.Control.Zoom({ position: 'bottomright'}).addTo(map)
 
 // Initialise an LGA layer to add data to later
 let lgaLayer = new L.geoJSON().addTo(map);
-let lgaIdsTest = '11650';
 
-// Select the Search Box
-//const searchInput = document.getElementById("search-value");
-//searchInput.addEventListener("keyup", getSearchInput);
-
-//get the input from the search bar and assign for plotting
-function getSearchInput(event) {
-    // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        console.log('you have hit enter - plotting new polygon' );
-        lgaIdsTest = event.target.value;
-        loadLgaPolygon(lgaIdsTest);
-        createLgaPopupInformation(lgaIdsTest);
-        loadVenueInformation(lgaIdsTest);
-    }
+//zoom to region selected;
+function updateMapPosition(lat,long,zoom){
+    map.flyTo(new L.LatLng(lat,long),zoom);
 }
 
 //fetch boundary and add to map
@@ -49,6 +39,15 @@ async function loadLgaPolygon(lgaIds) {
     
     //Add polygon to the map;
     lgaLayer.addData(data.features[0]);
+
+    console.log(data.features[0].properties);
+
+    //Update the new map centre and map zoom (i think we should get this from the GeoJson);
+    mapCenterLat = lgaLayer.getBounds().getCenter().lat;
+    mapCenterLong = lgaLayer.getBounds().getCenter().lng;
+    console.log(mapCenterLat, mapCenterLong);
+    updateMapPosition(mapCenterLat,mapCenterLng,mapZoom);
+    
 }
 
 

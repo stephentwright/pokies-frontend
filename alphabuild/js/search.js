@@ -9,7 +9,7 @@ const urlSearchTerms = '/alphabuild/resources/json/searchTerms.json';
 const searchTerms = [];
 const searchTermsLgaName = [];
 const searchTermsLgaCode = [];
-let lgaSelection;
+let lgaSelection='11650';
 
 fetch(urlSearchTerms)
     .then(response => response.json())
@@ -35,7 +35,7 @@ searchInput.onkeyup = (e) => {
         });
         emptyArray = emptyArray.map((data)=>{
             //get the list to pass in the LGA clean Name to pass in         
-            return data='<li class="search-li">' + getTitleCase(data) +' (<b>' + searchTermsLgaName[searchTerms.indexOf(data)] + ' LGA</b>) </li>';
+            return data='<li>' + getTitleCase(data) +' (<b>' + searchTermsLgaName[searchTerms.indexOf(data)] + ' LGA</b>) </li>';
         });
         searchBox.classList.add("active"); //this show the autocomplete box
         showSuggestions(emptyArray);
@@ -83,4 +83,9 @@ function selectResult(element){
     console.log('index:'+ indexSearchTerm);
     console.log('lgaCode:'+ lgaSelection);
     console.log('You have selected',selectedResultTerm);
+
+
+    loadLgaPolygon(lgaSelection);
+    createLgaPopupInformation(lgaSelection);
+    loadVenueInformation(lgaSelection)
 }
