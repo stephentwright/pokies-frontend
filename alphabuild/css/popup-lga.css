@@ -1,22 +1,9 @@
-html {
-font-family: sans-serif;
-}
-
-body {
-    background-color: gray;
-}
-
-.popup-container .leaflet-popup-content-wrapper {
-
-    background-color: aliceblue;
-    height: 350px;
-    width: 350px;
+.popup-container {
+    min-width: 300px;
     padding: 0px;
     border-radius: 10px;
-    overflow-y: auto;
-
     display: grid;
-    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-rows: 15% 65% 20%;
     gap: 1px;
 }
 
@@ -26,27 +13,21 @@ body {
     border-bottom: 3px solid lightgray;
 }
 
+.rank-lga-name p{
+    font-size: 24px;
+    margin: auto;
+}
+
 .general-stats {
     display: grid;
     grid-template-columns: 1fr 3fr;
     border-bottom: 1px dashed gray;
-    padding-top: 10px;
-}
-
-.featured-stat {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-}
-
-.icon {
-    text-align: center;
-}
-
-.statistic {
-    font-size: 18px;
+    align-content: center;
+    justify-content: center;
 }
 
 .general-stats p{
+    margin: auto;
     font-size: small;
 }
 
@@ -54,12 +35,25 @@ body {
     height: 32px;
 }
 
-.rank-lga-name p{
-    font-size: 24px;
-
+.featured-stat {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 }
 
-.small-text {
-    font-size: 12px;
-    margin: 10px 0px;
+.featured-stat p{
+    margin: auto;
+    font-size: medium;
 }
+
+.featured-stat img{
+    height: 48px;
+}
+
+.icon {
+    text-align: center;
+}
+
+.statistic {
+    margin: auto 0px;
+}
+
