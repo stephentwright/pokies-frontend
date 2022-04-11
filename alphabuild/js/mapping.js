@@ -66,8 +66,42 @@ async function createLgaPopupInformation(lgaIds) {
                           <p>The total net profit for the period 1st Dec 2020 to 31 May 2021 was <b>$${lgaInfo["Net Profit"]}</b>. </p>
                           <p>There are <b>${lgaInfo["Premises Count"]}</b> clubs in the area with a total of <b>${lgaInfo.EGMs}</b> of electronic gaming machines (EGMs)</p>`;
 
+    //define the popup code injection
+    const lgaPopupInfoCustom = `<div class="popup-container">  
+                                <div class="rank-lga-name">
+                                    <div class="icon"><p>#1</p></div>
+                                    <div class="statistic"><p>${lgaInfo.lgaNameClean} LGA</p></div>
+                                </div>
+                                <div class="general-stats">
+                                    <div class="icon">
+                                        <img src="/alphabuild/resources/img/clubs-icon64.png" alt="Number of clubs">
+                                    </div>
+                                    <div class="statistic"><p>${lgaInfo["Premises Count"]} clubs or venues</p></div>
+                                    <div class="icon">
+                                        <img src="/alphabuild/resources/img/pokies-icon64.png" alt="Number of Pokie machines">
+                                    </div>
+                                    <div class="statistic"><p>${lgaInfo.EGMs} pokie machines</p></div>
+                                    <div class="icon">
+                                        <img src="/alphabuild/resources/img/money-fire-icon64.png" alt="Net profit">
+                                    </div>
+                                    <div class="statistic"><p>$${lgaInfo["Net Profit"]} net profit (6 mth)</p></div>
+                                    <div class="icon">
+                                        <img src="/alphabuild/resources/img/people-icon64.png" alt="Number of Adults">
+                                    </div>
+                                    <div class="statistic"><p>255,215 adults (18+ years)</p></div>
+                                    </div>
+                                <div class="featured-stat">
+                                    <div class="icon">
+                                        <img src="/alphabuild/resources/img/avo-toast-icon64.png" alt="Smashed Avo Index">
+                                    </div>
+                                    <div class="statistic">
+                                        <p>24 smashed avos (per adult)</p>
+                                    </div>
+                                </div>
+                                </div>`;
+
     //add to the LGA-level popup information to the map                      
-    lgaLayer.bindPopup(lgaPopupInfo).addTo(map);
+    lgaLayer.bindPopup(lgaPopupInfoCustom).addTo(map);
 }
 
 //load venue information with a brief popup message about the venue;

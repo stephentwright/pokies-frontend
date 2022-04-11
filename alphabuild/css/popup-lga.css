@@ -1,0 +1,59 @@
+.popup-container {
+    min-width: 300px;
+    padding: 0px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 15% 65% 20%;
+    gap: 1px;
+}
+
+.rank-lga-name{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    border-bottom: 3px solid lightgray;
+}
+
+.rank-lga-name p{
+    font-size: 24px;
+    margin: auto;
+}
+
+.general-stats {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    border-bottom: 1px dashed gray;
+    align-content: center;
+    justify-content: center;
+}
+
+.general-stats p{
+    margin: auto;
+    font-size: small;
+}
+
+.general-stats img{
+    height: 32px;
+}
+
+.featured-stat {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.featured-stat p{
+    margin: auto;
+    font-size: medium;
+}
+
+.featured-stat img{
+    height: 48px;
+}
+
+.icon {
+    text-align: center;
+}
+
+.statistic {
+    margin: auto 0px;
+}
+
