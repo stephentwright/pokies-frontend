@@ -39,15 +39,8 @@ async function loadLgaPolygon(lgaIds) {
     
     //Add polygon to the map;
     lgaLayer.addData(data.features[0]);
-
-    console.log(data.features[0].properties);
-
-    //Update the new map centre and map zoom (i think we should get this from the GeoJson);
-    mapCenterLat = lgaLayer.getBounds().getCenter().lat;
-    mapCenterLong = lgaLayer.getBounds().getCenter().lng;
-    console.log(mapCenterLat, mapCenterLong);
-    updateMapPosition(mapCenterLat,mapCenterLng,mapZoom);
-    
+    //map.fitBounds(lgaLayer.getBounds());
+    map.flyToBounds(lgaLayer.getBounds(), {'duration': 0.75})
 }
 
 

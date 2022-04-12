@@ -71,6 +71,10 @@ function showSuggestions(list){
     searchSuggestions.innerHTML = listData;
 }
 
+function clear_prevLGA() {
+    map.removeLayer(lgaLayer);
+}
+
 function selectResult(element){
     let selectedResultTerm = element.textContent;
     searchInput.value = selectedResultTerm;
