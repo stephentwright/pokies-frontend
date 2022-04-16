@@ -2,7 +2,7 @@
     height: 48px;
     position: absolute;
     left: 1%;
-    bottom: 1%;
+    bottom: 3%;
     display: flex;
     justify-content: space-around;
     gap: 5px;
@@ -28,23 +28,7 @@
     cursor: pointer;
 }
 
-/* Stylings for the Help Box 
-#help-container {
-    display: none;
-    max-width: 800px;
-    max-height: 800px;
-    padding: 20px;
-    margin: 20px;
-    background-color: beige;
-    border-radius: 20px;
-    position: absolute;
-    left:50%;
-    top: 50px;
-    transform: translate(-50%, 0);
-    overflow-y: auto;
-    z-index: 2;
-} */
-
+/* Stylings for the Help Box */
 #help-container {
     display: none;
     max-width: 1600px;

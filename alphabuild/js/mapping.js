@@ -54,22 +54,17 @@ async function createLgaPopupInformation(lgaIds) {
     const data = await response.json();
     const lgaInfo = data[0];
 
-    //create the boiler plate popup
-    const lgaPopupInfo = `<h2>${lgaInfo.lgaNameClean} Local Government Area</h2>
-                          <p>The total net profit for the period 1st Dec 2020 to 31 May 2021 was <b>$${lgaInfo["Net Profit"]}</b>. </p>
-                          <p>There are <b>${lgaInfo["Premises Count"]}</b> clubs in the area with a total of <b>${lgaInfo.EGMs}</b> of electronic gaming machines (EGMs)</p>`;
-
     //define the popup code injection
     const lgaPopupInfoCustom = `<div class="popup-container">  
                                 <div class="rank-lga-name">
-                                    <div class="icon"><p>#1</p></div>
-                                    <div class="statistic"><p>${lgaInfo.lgaNameClean} LGA</p></div>
+                                    <div class="icon"><p>#${lgaInfo.rank}</p></div>
+                                    <div class="statistic"><p>${lgaInfo.lgaName} LGA</p></div>
                                 </div>
                                 <div class="general-stats">
                                     <div class="icon">
                                         <img src="/alphabuild/resources/img/clubs-icon64.png" alt="Number of clubs">
                                     </div>
-                                    <div class="statistic"><p>${lgaInfo["Premises Count"]} clubs or venues</p></div>
+                                    <div class="statistic"><p>${lgaInfo.premisesCount} clubs or venues</p></div>
                                     <div class="icon">
                                         <img src="/alphabuild/resources/img/pokies-icon64.png" alt="Number of Pokie machines">
                                     </div>
@@ -77,7 +72,7 @@ async function createLgaPopupInformation(lgaIds) {
                                     <div class="icon">
                                         <img src="/alphabuild/resources/img/money-fire-icon64.png" alt="Net profit">
                                     </div>
-                                    <div class="statistic"><p>$${lgaInfo["Net Profit"]} net profit (6 mth)</p></div>
+                                    <div class="statistic"><p>${lgaInfo.profit} net profit (6 mth)</p></div>
                                     <div class="icon">
                                         <img src="/alphabuild/resources/img/people-icon64.png" alt="Number of Adults">
                                     </div>
