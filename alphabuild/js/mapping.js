@@ -31,7 +31,7 @@ function updateMapPosition(lat,long,zoom){
 //fetch boundary and add to map
 async function loadLgaPolygon(lgaIds) {
     //build url for fetching;
-    const url = '/alphabuild/resources/geoJSON/'+lgaIds+'.geojson';
+    const url = 'resources/geoJSON/'+lgaIds+'.geojson';
     
     //Fetch data
     const response = await fetch(url);
@@ -39,7 +39,6 @@ async function loadLgaPolygon(lgaIds) {
     
     //Add polygon to the map;
     lgaLayer.addData(data.features[0]);
-    //map.fitBounds(lgaLayer.getBounds());
     map.flyToBounds(lgaLayer.getBounds(), {'duration': 0.75})
 }
 
@@ -47,7 +46,7 @@ async function loadLgaPolygon(lgaIds) {
 //create a simple popup with basic LGA infomation
 async function createLgaPopupInformation(lgaIds) {
     //build url for fetching;
-    const url = '/alphabuild/resources/json/'+lgaIds+'-stats.json';
+    const url = 'resources/json/'+lgaIds+'-stats.json';
 
     //Fetch data
     const response = await fetch(url);
@@ -58,32 +57,32 @@ async function createLgaPopupInformation(lgaIds) {
     const lgaPopupInfoCustom = `<div class="popup-container">  
                                 <div class="rank-lga-name">
                                     <div class="icon"><p>#${lgaInfo.rank}</p></div>
-                                    <div class="statistic"><p>${lgaInfo.lgaName} LGA</p></div>
+                                    <div class="statistic"><p>${lgaInfo.lgaNameCombine} LGA</p></div>
                                 </div>
                                 <div class="general-stats">
                                     <div class="icon">
-                                        <img src="/alphabuild/resources/img/clubs-icon64.png" alt="Number of clubs">
+                                        <img src="resources/img/clubs-icon64.png" alt="Number of clubs">
                                     </div>
                                     <div class="statistic"><p>${lgaInfo.premisesCount} clubs or venues</p></div>
                                     <div class="icon">
-                                        <img src="/alphabuild/resources/img/pokies-icon64.png" alt="Number of Pokie machines">
+                                        <img src="resources/img/pokies-icon64.png" alt="Number of Pokie machines">
                                     </div>
                                     <div class="statistic"><p>${lgaInfo.EGMs} pokie machines</p></div>
                                     <div class="icon">
-                                        <img src="/alphabuild/resources/img/money-fire-icon64.png" alt="Net profit">
+                                        <img src="resources/img/money-fire-icon64.png" alt="Net profit">
                                     </div>
                                     <div class="statistic"><p>${lgaInfo.profit} net profit (6 mth)</p></div>
                                     <div class="icon">
-                                        <img src="/alphabuild/resources/img/people-icon64.png" alt="Number of Adults">
+                                        <img src="resources/img/people-icon64.png" alt="Number of Adults">
                                     </div>
-                                    <div class="statistic"><p>255,215 adults (18+ years)</p></div>
+                                    <div class="statistic"><p>${lgaInfo.popCombine} adults (18+ years)</p></div>
                                     </div>
                                 <div class="featured-stat">
                                     <div class="icon">
-                                        <img src="/alphabuild/resources/img/avo-toast-icon64.png" alt="Smashed Avo Index">
+                                        <img src="resources/img/avo-toast-icon64.png" alt="Smashed Avo Index">
                                     </div>
                                     <div class="statistic">
-                                        <p>24 smashed avos (per adult)</p>
+                                        <p>${lgaInfo.featuredStat} smashed avos (per adult)</p>
                                     </div>
                                 </div>
                                 </div>`;
@@ -95,7 +94,7 @@ async function createLgaPopupInformation(lgaIds) {
 //load venue information with a brief popup message about the venue;
 async function loadVenueInformation (lgaIds) {
     //build the url for fetching
-    const url='/alphabuild/resources/json/'+lgaIds+'-venues.json';
+    const url='resources/json/'+lgaIds+'-venues.json';
 
     //fetch data
     const reponse = await fetch(url);
@@ -106,7 +105,7 @@ async function loadVenueInformation (lgaIds) {
 
         // create the club infomation boiler plate
         const clubInfo = `<h2>${data[i]["Licence name"]}</h2>
-                          <p>The number of electronic gaming machines (EGMs) is at the venue is currently <b>${data[i].EGMs}</b>   .</p>`;
+                          <p>The number of electronic gaming machines (EGMs) at the venue is currently <b>${data[i].EGMs}</b>   .</p>`;
         
         // add the marker to the map
         L.marker([data[i].Latitude, data[i].Longitude])

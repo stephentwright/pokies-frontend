@@ -3,25 +3,25 @@
     padding: 0px;
     border-radius: 10px;
     display: grid;
-    grid-template-rows: 15% 65% 20%;
+    grid-template-rows: 20% 60% 20%;
     gap: 1px;
 }
 
 .rank-lga-name{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    border-bottom: 3px solid lightgray;
+    /* border-bottom: 3px solid lightgray; */
 }
 
 .rank-lga-name p{
-    font-size: 24px;
+    font-size: 20px;
     margin: auto;
 }
 
 .general-stats {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    border-bottom: 1px dashed gray;
+    /* border-bottom: 1px dashed gray; */
     align-content: center;
     justify-content: center;
 }
@@ -51,6 +51,7 @@
 
 .icon {
     text-align: center;
+    margin: auto;
 }
 
 .statistic {

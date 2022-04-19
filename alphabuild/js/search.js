@@ -5,11 +5,10 @@ const searchSuggestions = searchBox.querySelector('.autocom-box')
 
 // fetch the search terms
 // TODO: this can be cleaned up significantly
-const urlSearchTerms = '/alphabuild/resources/json/searchTerms.json';
+const urlSearchTerms = 'resources/json/searchTerms.json';
 const searchTerms = [];
 const searchTermsLgaName = [];
 const searchTermsLgaCode = [];
-let lgaSelection='11650';
 
 fetch(urlSearchTerms)
     .then(response => response.json())
